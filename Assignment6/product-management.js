@@ -1,0 +1,105 @@
+async function getProducts() {
+
+    const response = await fetch(
+        "https://fakestoreapi.com/products"
+    );
+
+    const data = await response.json();
+
+    console.log("GET Response:");
+    console.log(data);
+}
+
+async function addProduct() {
+
+    const product = {
+        title: "Wireless Headphones",
+        price: 1999,
+        category: "electronics"
+    };
+
+    const response = await fetch(
+        "https://fakestoreapi.com/products",
+        {
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(product)
+        }
+    );
+
+    const data = await response.json();
+
+    console.log("POST Response:");
+    console.log(data);
+}
+
+async function updateProduct() {
+
+    const product = {
+        title: "Updated Product",
+        price: 2999,
+        category: "electronics"
+    };
+
+    const response = await fetch(
+        "https://fakestoreapi.com/products/1",
+        {
+            method: "PUT",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(product)
+        }
+    );
+
+    const data = await response.json();
+
+    console.log("PUT Response:");
+    console.log(data);
+}
+
+async function updatePrice() {
+
+    const product = {
+        price: 1499
+    };
+
+    const response = await fetch(
+        "https://fakestoreapi.com/products/1",
+        {
+            method: "PATCH",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(product)
+        }
+    );
+
+    const data = await response.json();
+
+    console.log("PATCH Response:");
+    console.log(data);
+}
+
+async function deleteProduct() {
+
+    const response = await fetch(
+        "https://fakestoreapi.com/products/1",
+        {
+            method: "DELETE"
+        }
+    );
+
+    const data = await response.json();
+
+    console.log("DELETE Response:");
+    console.log(data);
+}
